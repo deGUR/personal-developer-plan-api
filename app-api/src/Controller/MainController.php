@@ -11,7 +11,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(): Response
+    public function indexAction(): Response
     {
         return $this->json([
             'message' => 'Hello world!',
