@@ -10,3 +10,6 @@ PDP to increase the level of seniority
 	2. Then you need to go to the following address:
 
 ```localhost:8082/```
+
+	3. To shutdown all containers, use the command:
+```make down```
