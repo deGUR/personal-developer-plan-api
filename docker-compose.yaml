@@ -12,6 +12,7 @@ services:
       - ./dockerfiles/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php7.4-service
+      - mysql-service
     networks:
       - pdp-api
 
@@ -25,6 +26,39 @@ services:
       - "9002:9000"
     volumes:
       - ./app-api:/app-api
+    depends_on:
+      - mysql-service
+    networks:
+      - pdp-api
+
+  # mysql
+  mysql-service:
+    image: mysql:5.7
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./dockerfiles/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_USER: pdp_user
+      MYSQL_DATABASE: pdp_database
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    networks:
+      - pdp-api
+
+  # redis
+  redis-service:
+    image: redis
+    container_name: redis-container
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./dockerfiles/redis:/data
+    command: redis-server --appendonly yes
     networks:
       - pdp-api
 
