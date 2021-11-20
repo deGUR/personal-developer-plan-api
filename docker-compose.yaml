@@ -34,7 +34,7 @@ services:
   # mysql
   mysql-service:
     image: mysql:5.7
-    container_name: mysql-container
+    container_name: mysql-container-api
     ports:
       - "3306:3306"
     volumes:
@@ -52,7 +52,7 @@ services:
   # redis
   redis-service:
     image: redis
-    container_name: redis-container
+    container_name: redis-container-api
     restart: always
     ports:
       - "6379:6379"
