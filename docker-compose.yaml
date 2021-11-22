@@ -19,8 +19,8 @@ services:
   # php
   php7.4-service:
     build:
-      context: .
-      dockerfile: ./dockerfiles/php/Dockerfile
+      context: ./dockerfiles/php/
+      dockerfile: Dockerfile
     container_name: php-container-api
     ports:
       - "9002:9000"
@@ -46,19 +46,6 @@ services:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_PASSWORD: secret
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    networks:
-      - pdp-api
-
-  # redis
-  redis-service:
-    image: redis
-    container_name: redis-container-api
-    restart: always
-    ports:
-      - "6379:6379"
-    volumes:
-      - ./dockerfiles/redis:/data
-    command: redis-server --appendonly yes
     networks:
       - pdp-api
 

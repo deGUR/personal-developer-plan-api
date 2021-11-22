@@ -20,3 +20,9 @@ WORKDIR /app-api
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer  \
     && php /usr/local/bin/composer self-update
+
+COPY entrypoint.sh /
+
+RUN chmod a+x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
