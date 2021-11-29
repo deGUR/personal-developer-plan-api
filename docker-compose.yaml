@@ -9,7 +9,7 @@ services:
       - "8082:80"
     volumes:
       - ./app-api:/app-api
-      - ./dockerfiles/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php7.4-service
       - mysql-service
