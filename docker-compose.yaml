@@ -41,10 +41,10 @@ services:
       - ./data/mysql:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_USER: pdp_user
-      MYSQL_DATABASE: pdp_database
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_PASSWORD: secret
+      MYSQL_USER: "${DATABASE_USER}"
+      MYSQL_DATABASE: "${DATABASE_NAME}"
+      MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     networks:
       - pdp-api
